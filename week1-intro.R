@@ -53,7 +53,7 @@
 # umbrella, like making a file or similar. This is helpful to make if you wanted to eventually link to an online repository like github, or if you
 # want to share, move or send all scripts of a group together. 
 
-### TASK: MAKE A PROJECT
+### MAKE A PROJECT
 # Hit new project > New Directory > New Project > directory name whatever you want (no spaces), Browse to wherever you want the project held > click
 # open in new session > Create Project 
 # new window should open. Top of window you should see your project "~/...". normal top of window will just say RStudio. You want to note just because
