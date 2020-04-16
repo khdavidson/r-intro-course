@@ -6,7 +6,7 @@
 # HOUSEKEEPING #
 ################
 
-# lonely island-style roll call? 
+# roll call 
 
 # going to spend a long time going over RStudio today itself, it may seem tedious but we need to make sure we are all on the same page from the ground
 # up. If we run into issues in the future and i ask "what error shows in your console?" or "how is the variable defined in your environment?" or 
@@ -20,11 +20,16 @@
 # R is an awesome, flexible tool. it is so flexible that there are millions of different ways to achieve the same result. some are more elegant, some
 # are clunky. i may not show you the prettiest or most elegant way of doing something, i won't know all the of the answers, and other people may have
 # other ways to do things. you may see other tutorials online that do it other ways. There is no right/wrong way, as long as you get the right answer.
-# as you get more comfortable and develop, you'll figure out what is more comfortable. there is only one computing language for R, but within it, 
-# people have different dialects. 
+# R is its own coding language, but within it are different dialects. 
+
 # given that, unless it's crucial, i think i'll ask that for now, folks not share different ways to do things, only because it can be very 
 # overwhelming. at the end, if people have better ways or ideas, we can compile them into one place as a reference guide for anyone looking to dive
 # deeper into this. 
+
+# During the early intro phases, it’s hard to see why R is much better than Excel. However, once you get into more complex analyses you can get a 
+# lot more horsepower, and R is much more transparent if you are doing multiple levels of analysis, infilling, or extrapolating data. 
+# As well, it can be paired with github to distribute code transparently for open-access, which is a requirement now for most scientific 
+# publications. 
 
 ##################### Qs
 
@@ -50,25 +55,29 @@
 # up top is a menu of icons to start a variety of new files, a new project, open files, save buttons, print, etc. 
 
 # First thing to define: project and a script. As you might suspect, making a new project is a way to simply connect a bunch of scripts under one
-# umbrella, like making a file or similar. This is helpful to make if you wanted to eventually link to an online repository like github, or if you
+# umbrella, like making a folder or similar. This is helpful to make if you wanted to eventually link to an online repository like github, or if you
 # want to share, move or send all scripts of a group together. 
 
 ### MAKE A PROJECT
-# Hit new project > New Directory > New Project > directory name whatever you want (no spaces), Browse to wherever you want the project held > click
-# open in new session > Create Project 
-# new window should open. Top of window you should see your project "~/...". normal top of window will just say RStudio. You want to note just because
-# R will often remember you have a project and will open the most recent one. If you don't want to work in that project, or you want to switch projects,
-# that can be important. 
+# Hit File > New project > New Directory > New Project > directory name whatever you want (no spaces), Browse to wherever you want the project held > 
+# > click open in new session > Create Project 
+# new window should open.
+# A new script is automatically opened for our fourth window????. this is what a typical RStudio layout will be: script, console, environment, and plots/help
 ### 
 
 ##################### Qs      //end of 'e-tour' 
 
 ##################################################################################################################################################
 
+# for today, we are approaching R considering 2 major components or pillars: 
+# 1: the 'underlying' structure of code and data in r
+# 2: compilations/operations on data by functions (and arguments) 
 
-##############
-# NEW SCRIPT #
-##############
+
+
+##############################
+# 1. VARIABLE/CODE STRUCTURE #
+##############################
 
 # Now back at same window as before, but within a project. 
 
@@ -77,19 +86,18 @@
 # are left with. What happens in the console DOES NOT GET SAVED so DO NOT work here unless you don't care about it being saved. the console shows you
 # if your code runs properly, any warnings or errors, debug messages, etc. 
 
-# good habit to get into is to always start your script with some real words rather than code. give it a title, a date, description, etc. 
+# good habit to get into is to always start your script with some REAL WORDS rather than code. give it a title, a date, description, etc. 
 # the way we do this in R is to start everything with a hash like you're hashtagging your life - go ahead and give script some info (example). 
-# this is called ANNOTATION - there is no such thing as too much annotation when it comes to a script. It seems silly at the time, but I have had
-# literally stream of consciousness type annotations and it has saved my butt when I come back to a script months later and have no idea why I did
-# something or how I did it. ALWAYS ALWAYS ANNOTATE! 
+# this is called ANNOTATION - there is no such thing as too much annotation when it comes to a script. It will save your butt and is important
+# for transparency and understanding if you have to hand code off to someone else. ALWAYS ALWAYS ANNOTATE! 
 
-# we will now do some simple calculations with R to explore how it works and displays information in the script and the console. 
+# Now some SIMPLE CALCULATIONS with R to explore how it works and displays information in the script and the console. 
 # when we decide to run a piece of code, or 'execute' the code, we do CTRL+ENTER in the script, but in the console we can just hit enter. like i said,
 # the script is just like a word document, you just type away however you want. it doesn't become code until you hit CTRL+ENTER. in the console, 
-# think of that as 'live' coding - all you have to do is hit enter. Anyway, you may forget and be wondering why certain code won't run. 
+# think of that as 'live' coding - all you have to do is hit enter. 
 2+2
 568*88
-968/(45-3)             # brackets are cool because they auto-bracket! 
+968/(45-3)                   # brackets are cool because they auto-bracket! 
 
 # simple numerical operations. more complex things: 
 sqrt(77.5)
@@ -97,42 +105,51 @@ log(202)
 log10(66933451)
 668^7
 
-# we can also define variables
-a <- 665                 # The <- defines a thing and applies it to the value. these are bi-directional, '665 -> a' also works (never see it written this way though). you can use '=' but it is a bad idea when you get into different types of functions because it means something different to R
+# we can also define variables and they show up in our ENVIRONMENT
+a <- 665                 # The <- defines a thing and applies it to the value.                       these are bi-directional, '665 -> a' also works (never see it written this way though). you can use '=' but it is a bad idea when you get into different types of functions because it means something different to R
 b <- 3
 x <- 9+9
-y <- 64650566
+y <- 646505.66
 
 # and then create a formula
 ((a^b)-x)+y           
 formula <- ((a^b)-x)+y                 
 
-# we can also definte what is called a vector. a vector is a list of values that can be numerical, character, logical, etc. its the most basic
-# element of a table or dataframe, it's essentially just one row of data
-v1 <- c(88, 89, 90, 91, 92)        # c() means you are about to list multiple items separated by ,
-v2 <- c("joe exotic", "carole baskin", "doc antle", "tiger #1", "scarface")    # quotes are cool because they auto-quote!
+
+# we can also definte what is called a VECTOR. a vector is a list of values that can be numerical, character, logical, etc. its the most basic
+# element of a table or dataframe, it's essentially just one string of data. see ENVRIONMENT again.
+v1 <- c(88, 89, 90, 91, 92)                                                         # c() ('concatenate or combine') means you are about to list multiple items separated by ,
+v2 <- c("joe exotic", "carole baskin", "doc antle", "tiger #1", "scarface")         # quotes are cool because they auto-quote!
 v3 <- c(585, 22.3, 963, 42, 7.9665)
+v4 <- c(45, "sockeye", TRUE)
 
 # lets reference a specific value in one of these vectors. this is a simple vector, it has 5 values we specified in a certain order, it is 1D so 
 # therefore we should only have to tell R one piece of information to return a value
-v1[1]     # [] indicates we are looking inside of something with multiple values and a basic structure. what we write within [] indicates WHERE we want R to look
-v2[3]     # works with character values too!  
-v3[c(1,3)]    # here we get values in spots 1 and 3
-v1[c(2:4)]    # here we get values in spots 2 to 4 INCLUSIVE (:)
+v1[1]                     # [] indicates we are looking inside of something with multiple values and a basic structure. what we write within [] indicates WHERE we want R to look
+v2[3]                     # works with character values too!  
+v3[c(1,3)]                # here we get values in spots 1 and 3
+v1[c(2:4)]                # here we get values in spots 2 to 4 INCLUSIVE (:)
 
-# what if we wanted to make a matrix object? a matrix is a 2D series of values - it's like a basic table, with fixed columns and rows, but all of
+
+##################### Qs
+
+# Next definition is a MATRIX. a matrix is a 2D series of values - it's like a basic table, with fixed columns and rows, but all of
 # the SAME data type - this is how it differs from a dataframe. a dataframe, which we will discuss LATER, could have numbers, characters, dates, etc.
-m1 <- matrix(11:19, nrow=3, ncol=3)     # making a matrix of 9 values, in a 3x3 format
+m1 <- matrix(nrow=3, ncol=3, 11:19)                                                 # making a matrix of 9 values, in a 3x3 format
+# show matrix - location indicator numbers
 
 # to view and pull values from within the matrix, we use the same premise as above with [], only this time with an added ","
-m1[1,3]     # within [,] is always [row, column] location 
+m1[1,3]                   # within [ , ] is always [row, column] order 
 m1[c(1,2), 2]
-m1[c(1:3), c(1,2)]      # can nest vector or list requests within the matrix location request to pull out specific values 
+m1[c(1:3), c(1,2)]        # can nest vector or list requests within the matrix location request to pull out specific values 
+m1[c(1:3), -c(3)]         # same as above! 
 
-# this basic premise of how the [], (), commas, "", etc. calls work will apply to all dataframes and types across R pretty much regardless of whatever
-# data or process you are using. These are some base R operations. 
+####### review R error messages if a ( or , is removed!
 
-####### review R error messages if a ( or , is removed! 
+
+# the basic premise of using [], (), commas, "", etc. will apply to essentially all dataframes and types across R regardless of whatever data 
+# you are using. These are some core 'base R' operations. 
+
 
 ##################### Qs          //end of 'new script' 
 
@@ -143,40 +160,65 @@ m1[c(1:3), c(1,2)]      # can nest vector or list requests within the matrix loc
 # FUNCTIONS, ARGUMENTS, and R HELP #
 ####################################
 
+# anything in R that is a word followed by () is a function. this is something that, when fed ARGUMENTS, will perform some kind of further analysis
+# or restructuring, some extra code in the background, to make a product. 
+
+# start with the example of the plot() function - self-explanatory, it would make a plot
+
 plot(v1, v3)         # plot is an x,y or y~x plot.
 
-# anything in R that is a word followed by () is a function. this is something that, when fed ARGUMENTS, will perform some kind of further analysis
-# or restructuring or something, some extra code, to make a product. 
+# TO ASK R FOR HELP... ?plot
 # lets look at ?plot to help us understand what this FUNCTION is and what ARGUMENTS it wants 
 # in the help files at the top we can see the function we are asking about, followed by what {package} it came from 
 
-# the description and title should tell you a fair bit about what is going on. 
+# the DESCRIPTION and TITLE should tell you a fair bit about what is going on. 
 # immediately we see it is for XY plotting, so scatterplots - no categorical or descriptive stuff, just good old fashioned x-y data. the rest of the
 # description for now is above and beyond what we want to do, but essentially, there are a lot of different plot types, depending on what data 
 # structure you are using. 
-# scroll down, usage shows the format the for the SYNTAX. Syntax, which is fancy for 'sentence structure' means just that - how our code is structured,
-# is it separated by commas, is it "x,y" or "y~x" which you will see... elipses means "and more", but what is shown before "..." are the key
+# scroll down, usage shows the format for the SYNTAX. Syntax, which is fancy for 'sentence structure' means just that - how our code is structured,
+# is it separated by commas, is it "x,y" or "y~x" which you will see... elipses means "and more", but what is shown before "..." are some key
 # arguments.
 
-# Arguments is one of the most helpful places, it tells us all the arguments and parameters that can be fed to plot() to give
+# ARGUMENTS is one of the most helpful places, it tells us all the arguments and parameters that can be fed to plot() to give
 # us a desired result. we need the x and y arguments, but then there's a ton of other stuff we could use, like graphical parameters, the type of
 # plot, etc. so lets try some 
 
-# lets specify a LINE plot, rename the xlab and ylab, change the line width (lwd), line type (lty), and colour
 
-plot(v1, v3, type="l", lwd=2, lty=2, col="red", xlab="Julian Date", ylab="Awesomeness")
+# lets specify a LINE plot, rename the xlab and ylab, change the line width (lwd), line type (lty), and colour
+plot(v1, v3, type="l", xlab="Julian Date", ylab="Awesomeness")
+
 
 # i am using this plot() simply as an example of a function, to outline arguments, and to access R help files. This is all in 'base R' so far, but
 # there is a nice package called "ggplot" i'm going to introduce in a week or 2, it's way easier to plot in once you get the hang of it, so
-# don't stress to memorize these exact calls. it is helpful but ggplot makes prettier graphs and is often a bit more flexible than plot()
+# don't stress to memorize these exact details. 
+
 
 ##################### Qs            //end of 'r functions and help' 
 
-# nice but lets look at our own data now!
+
+
+###################
+# HOMEWORK: SWIRL #
+###################
+
+# SWIRL is an intro package that will guide you through different features of R 
+# Lesson 1 is good review of what we did today! 
+
+# INSTALL SWIRL TOGETHER! 
+install.packages("swirl")
+library(swirl)
+
+
+# // end day 1 
+
+
+
+
+
 
 ##################################################################################################################################################
 
-
+# nice but lets look at our own data now!
 # from here on is the code process you will use to set up a new script each time 
 
 #######################
@@ -187,8 +229,8 @@ plot(v1, v3, type="l", lwd=2, lty=2, col="red", xlab="Julian Date", ylab="Awesom
 # 1. WORKING DIRECTORY 
 #########
 
-# the working directory is where you store your data. by setting a working directory, you are telling R where to find the file(s) you want to 
-# reference. I have a separate folder in My Docs called ANALYSIS - within this folder I have sub-folders for Data, Scripts and Figures. It is
+# the WORKING DIRECTORY is where you store your data. by setting a working directory, you are telling R where to find the file(s) you want to 
+# use. I have a separate folder in My Docs called ANALYSIS - within this folder I have sub-folders for Data, Scripts and Figures. It is
 # much easier to have one central folder for all working analysis data files, in the event you want to use multiple excel files in one script. If
 # the scripts are stored in different places on your computer, you have to change your working directory each time which is a huge pain. 
 
@@ -216,16 +258,15 @@ setwd("~/ANALYSIS/Data")
 # around data cleaning, manipulation, plotting, summarizing, etc. we won't use these packages today, but we will install and load them so that we
 # are ready for next week. 
 
-install.packages("tidyverse")   # <- this can be written in your console, doesn't need to be saved. once you install a package, it's on your computer until you erase the computer memory or uninstall R and RStudio
-library(tidyverse)              # <- this is what you want written at the top of your script! 
-
+install.packages("tidyverse")            # this can be written in your console, doesn't need to be saved. once you install a package, it's on your computer until you erase the computer memory or uninstall R and RStudio
+library(tidyverse)                       # this is what you want written at the top of your script! 
 # it may take a while to install and unpack the packages - there are a lot! 
 
 # we will also install and load some packages for reading Excel files: 
 install.packages("XLConnect")      
 install.packages("xlsx")
 install.packages("openxlsx")
-library(XLConnect)                   # <- these can be finicky, read-in IN THIS ORDER
+library(XLConnect)                       # these can be finicky, read-in IN THIS ORDER
 library(xlsx)
 library(openxlsx)
 
@@ -238,7 +279,7 @@ library(openxlsx)
 
 # now we have wd and packages loaded, we can read in our data. this is the Excel or csv file of data that we want to perform some analysis on. The
 # most common data format, because it works across all platforms, is a .csv (or 'comma separated values') file. It's like a text file, it has no
-# fancy cell formatting or anything so it is usually the simplest type. 
+# fancy cell formatting or anything so it is usually the simplest type. It is also only 1 tab when opened in Excel - cannot have multiple tabs.
 
 # to start by reading in a csv file
 data <- read.csv("r-intro-week1_calibration.csv")
@@ -255,6 +296,7 @@ data <- read.csv("r-intro-week1_calibration.csv")
 # (not here) DATE: a date, important for any work analyzing or plotting time-series data
 # r senses variable types and assigns them based on its best guess, but sometimes isn't always correct. E.g., scroll down to "hpe_startdate" etc,
 # it has assigned dates to be Factors - BECAUSE they don't have a year attached! 
+# Best practice, always check your variables before you start anything
 
 # this sidebar is really helpful, but it's hard to actually see what we are working with. click on 'data' to view fullscreen! 
 
@@ -274,8 +316,8 @@ data <- read.csv("r-intro-week1_calibration.csv")
 data.xl <- read.xlsx("r-intro-week1_calibration.xlsx", sheet = 2)      # sheet index = sheet number. WATCH THE FILETYPE! you might have a macro Excel file which is .xlsm, or an old excel file .xls. DONT ASSUME .xlsx!
 
 # using the dropdown menu, we can see it has applied TOTALLY different variable types to many of our variables that were Factors - almost all are now
-# Characters. This is fine, but may pose problems if we want to use factors to group or summarize data in different ways. BUT we can cross that 
-# bridge when we come to it! 
+# Characters. This is fine, but may pose problems if we want to use factors to group or summarize data in different ways. This is important now
+# just to show that different packages may treat data differently - be aware of this. 
 
 
 ##################### Qs?   //end of 'initalize script' 
@@ -292,7 +334,8 @@ data.xl <- read.xlsx("r-intro-week1_calibration.xlsx", sheet = 2)      # sheet i
 ### from each column. can be mix of variable types (numeric, factor, character, etc.)"
 
 # lets also look at our data using head()
-head(data)        # gives first 6 rows of data just for quick look
+head(data)                             # gives first 6 rows of data just for quick look
+
 # what are all of our column (or variable) names? 
 names(data)
 
@@ -302,20 +345,20 @@ data$stream_alias
 data$low_precision_estimate
 
 # now lets try using the syntax we learned before to reference a specific value in the data frame.
-# start first by looking for the 73rd value in 'watershed_group'
+# look for the 73rd value in 'watershed_group'
 data$watershed_group[73]
-# or the 100th value for 'high precision estimate'
+# look for the 100th value for 'high precision estimate'
 data$high_precision_estimate[100]
 
 # in this case, we have already told R which column to look in, so now we are just specifying the row number. we can also use the matrix-style
 # reference method we learned above as well, where we reference [row #, column #]
 # what is the 15th value in column 8? 
-data[15,8]
+data[15,8]                             # quick way to find column # is using the data View option & hovering over the column
 
 # what is column 19's 99th value? 
 data[99,19]
 
-# we can also use the vector, or list, method of looking up values we learned earlier 
+# we can also use the embedded vector, or list, method of looking up values we learned earlier 
 # what are values 1 to 10 (inclusive) in column 5?
 data[c(1:10), 5]
 
@@ -323,7 +366,7 @@ data[c(1:10), 5]
 data[c(55, 57, 59), 13]
 
 # what is the 23rd value of column 29? 
-data[23, 29]          # we don't have a column 39! BE CAREFUL! R will not always give you blatant warning signs/errors if you mess up! 
+data[23, 29]                           # we don't have a column 29! BE CAREFUL! R will not always give you blatant warning signs/errors if you mess up! 
 
 
 #######
@@ -333,21 +376,22 @@ data[23, 29]          # we don't have a column 39! BE CAREFUL! R will not always
 # what if you wanted to look at data from only one location? we might only be interested in Stellako counts   
 # we know to start it has to do with "gazetted stream name", and selecting only the specific rows that say "Stellako", so we know it should be a
 # similar format to what we were doing before with []
-stellako <- data[data$gazetted_stream_name=="Stellako River", ]           # GOOD. here, because we have specificed we want all rows in data where gazetted_stream_name == "stellako", we do not then FURTHER specify a column number. or else we ask to look within those rows and look for stellako, etc. keep comma and space to specify we want to keep dataframe structure/all columns 
-stellako2 <- data$gazetted_stream_name["Stellako River"]                  # WRONG. cant reference characters in place of the numerical value 
-stellako3 <- data$gazetted_stream_name=="Stellako River"                  # WRONG. no [] means we are simply asking R if at any point g_s_n is Stellako? so we are returned a logical vector
+stellako <- data[data$gazetted_stream_name=="Stellako River", ]                # GOOD. here, because we have specificed we want all rows in data where gazetted_stream_name == "stellako", we do not then FURTHER specify a column number. or else we ask to look within those rows and look for stellako, etc. keep comma and space to specify we want to keep dataframe structure/all columns 
+stellako2 <- data$gazetted_stream_name["Stellako River"]                       # WRONG. cant reference characters in place of the numerical value 
+stellako3 <- data$gazetted_stream_name=="Stellako River"                       # WRONG. no [] means we are simply asking R if at any point g_s_n is Stellako? so we are returned a logical vector
+# '==' means 'exactly equal to' 
 
 # what if we want stellako AND nadina? 
 stell_nad <- data[data$gazetted_stream_name=="Stellako River" | data$gazetted_stream_name=="Nadina River", ]         # in this base R syntax, you can't use & or &&, although in some specific cases you can. here, "==" is an absolute "must equal". | is usually "given" or "allowing" and add on. if you ever have issues with using &, try replacing with |
 stell_nad2 <- data[data$gazetted_stream_name=c("Stellako River", "Nadina River"), ]                                  # WRONG. can't use c() with subsetting
 
 # what if we want all systems with a discharge higher than 20 m3/s?
-discharge <- data[data$water_discharge > 20, ]                            # this works, but it sucks with all the NAs
+discharge <- data[data$water_discharge > 20, ]                                 # this works, but it sucks with all the NAs
 
 # to get rid of NAs 
-bye_na <- discharge[!is.na(discharge$water_discharge), ]                  # "!" indicates we dont want something. with NAs, it's a bit tricker.
+bye_na <- discharge[!is.na(discharge$water_discharge), ]                       # "!" indicates we dont want something. with NAs, it's a bit tricker.
 # to get rid of any normal level of a variable, e.g., we don't want Birken head
-no_birks <- data[data$gazetted_stream_name != "Birkenhead River", ]       # can be interpreted as "does not equal"
+no_birks <- data[data$gazetted_stream_name != "Birkenhead River", ]            # can be interpreted as "does not equal"
 
 
 ##################### Qs
@@ -374,7 +418,7 @@ length(unique(data$low_precision_method))
 # count number of rows/columns in a dataframe
 nrow(data)
 ncol(data)
-length(data)    # same as ncol in this case
+length(data)                # same as ncol in this case
 
 
 #######
@@ -386,13 +430,13 @@ length(data)    # same as ncol in this case
 
 # lets plot a scatterplot of the low precision estimate~high precision estimate (recall y~x)
 plot(data$high_precision_estimate ~ data$low_precision_estimate)
-plot(data=data, high_precision_estimate ~ low_precision_estimate)       # can be a little cleaner to specify data=data first
+plot(data=data, high_precision_estimate ~ low_precision_estimate)            # can be a little cleaner to specify data=data first
 
 # lets make the points solid, gray filled, size 2
-plot(data=data, high_precision_estimate ~ low_precision_estimate,       # specify your data, recall y~x
-  pch=21, col="black", bg="gray", cex=2,                                # pch is point shape, col is colour, bg is fill colour, cex is point size
-  xlab="Low precision estimate", ylab="High precision estimate")        # rename axes labels pretty
-abline(a=0, b=1, col="red")                                             # add a 1:1 regression line for fun 
+plot(data=data, high_precision_estimate ~ low_precision_estimate,            # specify your data, recall y~x
+  pch=21, col="black", bg="gray", cex=2,                                     # pch is point shape, col is colour, bg is fill colour, cex is point size
+  xlab="Low precision estimate", ylab="High precision estimate")             # rename axes labels pretty
+abline(a=0, b=1, col="red")                                                  # add a 1:1 regression line for fun 
 
 
 # or we could make a bar graph of total number of fish per year 
