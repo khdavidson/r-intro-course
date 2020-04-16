@@ -6,7 +6,7 @@
 # HOUSEKEEPING #
 ################
 
-# roll call 
+# roll call / powerpoint
 
 # going to spend a long time going over RStudio today itself, it may seem tedious but we need to make sure we are all on the same page from the ground
 # up. If we run into issues in the future and i ask "what error shows in your console?" or "how is the variable defined in your environment?" or 
@@ -15,21 +15,8 @@
 # and a script almost word-for-word of what I'm saying will be available with these notes so focus on keeping up with what I'm saying and doing, 
 # take notes if it helps, but don't get bogged down in details because I will send it all out at the end. 
 
-# everyone should have R and RStudio downloaded - the difference is that R is the workhorse, RStudio is just a nicer way of looking at/using it
+# everyone should have R and RStudio downloaded - the DIFFERENCE is that R is the workhorse, RStudio is just a nicer way of looking at/using it
 
-# R is an awesome, flexible tool. it is so flexible that there are millions of different ways to achieve the same result. some are more elegant, some
-# are clunky. i may not show you the prettiest or most elegant way of doing something, i won't know all the of the answers, and other people may have
-# other ways to do things. you may see other tutorials online that do it other ways. There is no right/wrong way, as long as you get the right answer.
-# R is its own coding language, but within it are different dialects. 
-
-# given that, unless it's crucial, i think i'll ask that for now, folks not share different ways to do things, only because it can be very 
-# overwhelming. at the end, if people have better ways or ideas, we can compile them into one place as a reference guide for anyone looking to dive
-# deeper into this. 
-
-# During the early intro phases, it’s hard to see why R is much better than Excel. However, once you get into more complex analyses you can get a 
-# lot more horsepower, and R is much more transparent if you are doing multiple levels of analysis, infilling, or extrapolating data. 
-# As well, it can be paired with github to distribute code transparently for open-access, which is a requirement now for most scientific 
-# publications. 
 
 ##################### Qs
 
@@ -202,7 +189,8 @@ plot(v1, v3, type="l", xlab="Julian Date", ylab="Awesomeness")
 ###################
 
 # SWIRL is an intro package that will guide you through different features of R 
-# Lesson 1 is good review of what we did today! 
+# a package is what it sounds like - a group or chunk of code to perform some special analysis or purpose in R. there are tons of packages out there
+# Lesson 1 in swirl is good review of what we did today! 
 
 # INSTALL SWIRL TOGETHER! 
 install.packages("swirl")
