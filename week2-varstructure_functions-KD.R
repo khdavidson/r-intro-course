@@ -166,7 +166,8 @@ m2[m2 != "chum"]                                       # '!=' is interpreted as 
 # Define vectors 
 # Define lists  
 # Define matrices (and vaguely know what an array is)
-# Extract specific values inside vectors, lists, and matrices
+# Define dataframes
+# Extract specific values inside vectors and matrices
 ####? Use a function and know to pass it arguments
 ####? Know how to use R to ask for help with passing arguments to functions
 ####? Know how to interpret R help documents
@@ -194,6 +195,7 @@ m2[m2 != "chum"]                                       # '!=' is interpreted as 
 
 # This is a nice, simple reference that summarizes the differences: https://www.programcreek.com/2014/01/vector-array-list-and-data-frame-in-r/
 # This has more detail and shows a LOT of different ways to deal with the different data types: https://swcarpentry.github.io/r-novice-inflammation/13-supp-data-structures/
+# Another good source for data structure details: https://qcbsrworkshops.github.io/Workshops/workshop01/workshop01-en/workshop01-en.html#45
 # Google is full of great resources. Some great pages are stackoverflow, crossvalidated, stackexchange, DataCamp, Datanovia, anything by 
 # SoftwareCarpentry. 
 #####
