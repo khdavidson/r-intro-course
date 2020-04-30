@@ -1,7 +1,161 @@
+# R intro course
+# week 3 - functions, arguments, help, starting a script 
+# KD and TV 
+# 30 Apr 2020
+
+
+
+## review; when to use "" inside ()
+
 
 
 
 ##################################################################################################################################################
+##################################################################################################################################################
+##################################################################################################################################################
+
+
+# Recall the 2 major components or pillars of R we are centered around for the intro with these basics: 
+# 1: The 'underlying' structure of code, data and variables in r                      THIS WAS WEEK 1 (APR 16) AND WEEK 2 (APR 23)
+# 2: Compilations/operations on data by FUNCTIONS (and ARGUMENTS)                     THIS IS TODAY (APR 30)
+
+
+
+
+
+                                                     ######################################
+###################################################### 2. FUNCTIONS, ARGUMENTS and R HELP #########################################################
+                                                     ######################################
+
+
+# We now start on PILLAR 2! Functions, Arguments and R Help files.
+
+#### Next definition: FUNCTION
+# Anything in R that is a word followed by () is a function. 
+# This is something that, when fed ARGUMENTS, will perform some kind of further analysis, restructuring, some extra code in the background, 
+# to return a specific product. 
+#### What are ARGUMENTS? 
+# Arguments are the pieces of information you give a function to make it work. They are the pieces of information written within the ().  
+# Luckily for us, EVERY function in R comes with HELP documentation. These help files will tell us what arguments we need to pass to the function
+# so that we don't have to memorize it! 
+#### 
+
+
+#===========#
+# FUNCTIONS #
+#===========#
+# We have already used functions! Recall, anything in R that is a word followed by () is a function! 
+c()                              # This is the VECTOR function, but there are currently no arguments in the ()
+matrix()                         # This is the MATRIX function, but there are currently no arguments in the ()
+mean()                           # This is the MEAN function, but there are currently no arguments in the ()
+sum()                            # This is the SUM function, but there are currently no arguments in the ()
+# It is hard to know how to fill in a function... what arguments do we need? This is different for every function and is a lot to remember...
+## enter R help! 
+
+
+# ??????????????????????????? 
+
+
+#========#
+# R HELP #
+#========#
+# To ask R for help with filling these functions with ARGUMENTS, type '?functionname'
+?c                               # This is how to access the help file for the vector function  
+?matrix                          # This is how to access the help file for the matrix function
+
+
+# ??????????????????????????? 
+
+
+#======================#
+# R HELP and ARGUMENTS #
+#======================#
+
+# Let's get acquainted with the layout of the R help documentation, focusing to start on the matrix() function
+
+# AT THE TOP we see the function we are asking about, followed by what {package} it came from 
+
+# The DESCRIPTION and TITLE should tell you a fair bit about what is going on. 
+# TITLE: Matrices. Simple, thank you R
+# DESCRIPTION: There are a few descriptions here depending on what specific function we are using. We are using matrix(), which creates a matrix 
+# from the given set of values. That's us! How do we give it those values though? 
+
+# Usage shows the format for the syntax. 
+
+#### WHAT IS SYNTAX
+# SYNTAX is a fancy word for 'sentence structure' or 'code structure' 
+# It means just that - how our code is structured. Is it separated by commas, like 'x,y', or like a formula, 'y~x' (which you might see later)?
+####
+
+
+# ??????????????????????????? 
+
+
+# Sometimes at the end of a function's syntax example you will see '...'
+# Ellipses ('...') means "and more". What is shown before "..." are some KEY ARGUMENTS
+
+# ARGUMENTS is one of the most helpful places. It tells us all the arguments and their parameters that can be fed to matrix() to give a desired
+# result. So we have 6+ arguments that can be fed to 'matrix()': data, nrow, ncol, etc. 
+# You will see that some (e.g., 'data') are OPTIONAL, and some (e.g., 'byrow') have DEFAULT settings. For these, if you don't include them in your
+# function, R will either ignore it (for optional arguments), or just use the default setting. It's good to know about these, especially default
+# settings when you get further into some analyses. 
+
+# Further down, DETAILS bascially explains in words what is happening in the different functions, and often will include any caveats or literature
+# references that informed how the code was compiled. 
+
+# NOTES explains some more details
+
+# At the veeerrryyy bottom the EXAMPLES section can often be helpful (but not always lol)
+
+
+# ??????????????????????????? 
+
+
+#==========#
+# PRACTICE # 
+#==========#
+
+#1. Make a 10x10 matrix filled with consecutive numerical values starting with 1
+matrix(nrow=10, ncol=10, 1:100)
+
+#2. Make a 2x3 (hint: [2,3]) matrix filled with the names of star wars characters: 
+# yoda, luke, darth vader, han, leia, chewy
+matrix(nrow=2, ncol=3, c('yoda', 'luke', 'darth vader', 'han', 'leia', 'chewy'))
+
+
+
+# ??????????????????????????? 
+
+
+
+########################## end of Section 2!! 
+
+
+
+#------------------------------------------------------------------------------------------------------------------------------------------------
+#==========================#
+# END OF SECTION 2 SUMMARY #
+#==========================#
+
+##### Section 2 summary: 
+# What 'functions' are - their form and requirements 
+# What 'arguments' are and their syntax (structure)
+# How to as R for help filling-in arguments for functions
+# How to interpret R help documentation to get what you need out of it! 
+
+# You will likely use ?functionname a lot! 
+#####
+#------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+##################################################################################################################################################
+##################################################################################################################################################
+##################################################################################################################################################
+
+
 
 # nice but lets look at our own data now!
 # from here on is the code process you will use to set up a new script each time 
@@ -27,7 +181,8 @@ setwd("~/ANALYSIS/Data")
 # everytime you close and re-start R, you will have to set your working directory. To save time, I copy the working directory script below from the
 # console, and make it the first line of my script. That way it is quick to re-set and run every time I start up analysis.
 
-##################### Qs
+
+# ??????????????????????????? 
 
 
 #########
@@ -55,23 +210,24 @@ library(XLConnect)                       # these can be finicky, read-in IN THIS
 library(xlsx)
 library(openxlsx)
 
-##################### Qs
+
+# ??????????????????????????? 
 
 
 #########
 # 3.1. READ IN DATA - CSV 
 #########
 
-# now we have wd and packages loaded, we can read in our data. this is the Excel or csv file of data that we want to perform some analysis on. The
-# most common data format, because it works across all platforms, is a .csv (or 'comma separated values') file. It's like a text file, it has no
-# fancy cell formatting or anything so it is usually the simplest type. It is also only 1 tab when opened in Excel - cannot have multiple tabs.
+# now we have wd and packages loaded, we can read in our data. this is the Excel or csv file of data that we want to perform some analysis on. 
+# csv (or 'comma separated values') is the most common data format because it works across all platforms file. 
+# It is also only 1 tab when opened in Excel - cannot have multiple tabs.
 
 # to start by reading in a csv file
 data <- read.csv("r-intro-week1_calibration.csv")
 
-# we see it shows up in our Environment. Click the blue arrow to see the variables and summaries. Here, each row is actually a colum. so you have
-# the column 'watershed_group' which is a Factor type variable with 10 levels, and then it gives you the head of those. Next is 'run_timing_group'
-# also a Factor but with 4 levels. 
+# we see it shows up in our Environment. Click the blue arrow to see the variables and summaries. Here, each row is actually a column. 
+# so you have the column 'watershed_group' which is a Factor type variable with 10 levels, and then it gives you the head of those. 
+# Next is 'run_timing_group' also a Factor but with 4 levels. 
 
 # We can see if we look through we have a few types of variables (key variables):
 # FACTOR: variables which take on a limited number of different values (aka categorical variables)
@@ -89,6 +245,8 @@ data <- read.csv("r-intro-week1_calibration.csv")
 # and NA value - that is because as a I mentioned before it's a continuous variable so there needs to be SOMETHING there. For factors, blanks are
 # OK. 
 
+# ??????????????????????????? 
+
 
 #########
 # 3.1. READ IN DATA - EXCEL 
@@ -105,7 +263,7 @@ data.xl <- read.xlsx("r-intro-week1_calibration.xlsx", sheet = 2)      # sheet i
 # just to show that different packages may treat data differently - be aware of this. 
 
 
-##################### Qs?   //end of 'initalize script' 
+# ??????????????????????????? 
 
 ##################################################################################################################################################
 
