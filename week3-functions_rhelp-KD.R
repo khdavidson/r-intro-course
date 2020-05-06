@@ -27,11 +27,11 @@
 # R has tons of in-built functions or you can create your own 
 #
 # The different parts of a function are: 
-# Function Name − This is the actual name of the function 
-# Arguments − An argument is a placeholder. When a function is invoked, you pass a value to the argument. 
-#             Arguments are optional; that is, a function may contain no arguments. Also arguments can have default values.
-# Function Body − The function body contains a collection of statements that defines what the function does.
-# Return Value − The return value of a function is the last expression in the function body to be evaluated.
+# Function name: This is the actual name of the function (e.g., matrix() )
+# Arguments: An argument is a placeholder. When a function is invoked, you pass a value to the argument. 
+#             Arguments are optional (a function may contain no arguments). Also arguments can have default values.
+# Function body: The whole collection of arguments/statements that tells the function what to do
+# Return value: The return value is what you get back from the function (can be stored as an object/value e.g., m1 <- matrix() )
 # 
 #### What are ARGUMENTS? 
 # Arguments are the pieces of information you give a function to make it work. They are the pieces of information written within the ().  
@@ -97,7 +97,8 @@ sum()                            # This is the SUM function, but there are curre
 
 # NOTES explains some more details
 
-# At the veeerrryyy bottom the EXAMPLES section can often be helpful (but not always lol)
+# At the veeerrryyy bottom the EXAMPLES section can often be helpful (but not always) - often your better bet is to Google further what you want
+# to do, and use the MANY help pages. StackOverflow or CrossValidated are some of the best ones. 
 
 
 
@@ -106,11 +107,35 @@ sum()                            # This is the SUM function, but there are curre
 #==========#
 
 #1. Make a 10x10 matrix filled with consecutive numerical values starting with 1
-matrix(nrow=10, ncol=10, 1:100)
+matrix(nrow=10, ncol=10, 1:100)                             # Remember the argument order doesn't matter
+matrix(nrow=10, ncol=10, data=1:100)
+matrix(nrow=10, ncol=10, c(1:100))
+matrix(nrow=10, ncol=10, data=c(1:100))
+# These all accomplish the exact same result
 
-#2. Make a 2x3 (hint: [2,3]) matrix filled with the names of star wars characters: 
-# yoda, luke, darth vader, han, leia, chewy
-matrix(nrow=2, ncol=3, c('yoda', 'luke', 'darth vader', 'han', 'leia', 'chewy'))
+
+#2. Make a 2x3 (hint: [2,3]) matrix filled with the names of star wars characters: yoda, luke, darth vader, han, leia, chewy
+# recall R specifies things as [row, column]. Therefore we want a 2 row, 3 column matrix
+matrix(nrow=2, ncol=3, c('yoda', 'luke', 'darth vader', 'han', 'jarjar binks', 'chewy'))
+matrix(nrow=2, ncol=3, data=c('yoda', 'luke', 'darth vader', 'han', 'jarjar binks', 'chewy'))
+# again, both work the same 
+
+##### TROUBLESHOOTING FROM CLASS 
+# What happens if we don't specify 6 values, instead only 5? 
+matrix(nrow=2, ncol=3, c('yoda', 'luke', 'darth vader', 'han', 'chewy'))
+# R returns a warning that the length of data we have given it (5 unique values) isn't a multiple of the number of rows (2 rows). Therefore, it will 
+# start recycling individual values starting at the first value ('yoda') to make up the difference. 
+
+# What if we gave it an exact multiple? e.g., a 4x2 matrix with only 4 unique values 
+matrix(nrow=4, ncol=2, data=c('rock', 'paper', 'scissors', 'dynamite'))
+# in this case, no warning message is returned because all 4 unqiue values can be recycled perfectly twice. 
+#####
+
+# Bonus note: specifying byrow=___ in the function changes the order of items in the matrix
+matrix(nrow=4, ncol=2, data=c('rock', 'paper', 'scissors', 'dynamite'), byrow=FALSE)     # This is the default (same as not including byrow at all)
+matrix(nrow=4, ncol=2, data=c('rock', 'paper', 'scissors', 'dynamite'), byrow=TRUE)      # This fills by rows, not columns 
+
+
 
 
 ########################## end of Section 2!! 
