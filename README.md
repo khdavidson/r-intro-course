@@ -6,4 +6,4 @@ Code comes with no guarantees.
 Sessions are aimed to be ~1 hour in length. 
 Raw data used in this course are not available. 
 
-Spring 2020
+Apr-Jun 2020
