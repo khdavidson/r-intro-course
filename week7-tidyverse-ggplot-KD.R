@@ -163,6 +163,7 @@ ggplot(smolt_data, aes(x=date, y=length_mm, fill=as.factor(NEWregion1))) +      
 
 
 # STEP 3: Apply filter() to data within ggplot()
+# Note that if R read in your smolt_data so that NEWregion1 is a factor, you will have to use filter(NEWregion1 != "NA) instead
 ggplot(smolt_data %>% filter(!is.na(NEWregion1)), aes(x=date, y=length_mm, fill=as.factor(NEWregion1))) +         # filter()   
   geom_point(size=3, shape=21, colour="black", stroke=1.5) +             
   scale_y_continuous(breaks = seq(75, 200, by=25)) +                
